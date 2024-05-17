@@ -29,4 +29,14 @@ public class Manufacturer {
     public String getNameOfCEO() {
         return nameOfCEO;
     }
+
+    @Override
+    public String toString() {
+        return "Manufacturer{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", headquarter='" + headquarter + '\'' +
+                ", nameOfCEO='" + nameOfCEO + '\'' +
+                '}';
+    }
 }

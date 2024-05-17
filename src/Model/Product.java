@@ -7,7 +7,7 @@ public class Product {
     private int ID;
     private String name;
     private String description;
-    private float price;
+    private double price;
     private Category category;
     private Manufacturer manufacturer;
     private HashMap <String, String> parameters;
@@ -15,7 +15,7 @@ public class Product {
 
 
 
-    public Product(int ID, String name, String description, float price, Category category, Manufacturer manufacturer, HashMap<String, String> parameters, int count) {
+    public Product(int ID, String name, String description, double price, Category category, Manufacturer manufacturer, HashMap<String, String> parameters, int count) {
         this.ID = ID;
         this.name = name;
         this.description = description;
@@ -38,7 +38,7 @@ public class Product {
         return description;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -55,5 +55,19 @@ public class Product {
     }
     public int getCount(){
         return count;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                ", manufacturer=" + manufacturer +
+                ", parameters=" + parameters +
+                ", count=" + count +
+                '}';
     }
 }
