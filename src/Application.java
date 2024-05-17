@@ -18,4 +18,7 @@ public class Application {
 
 
     }
+    public boolean login(String login, String password){
+        return controller.login(login, password);
+    }
 }
