@@ -9,9 +9,18 @@ public class Controller {
     private List<Product> products;
     private List<User> users;
 
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    private User loggedUser;
+
+    private List<PurchasesHistory> purchasesHistory;
+
     public Controller() {
         products = new ArrayList<>();
         users = new ArrayList<>();
+        purchasesHistory = new ArrayList<>();
         HashMap<String, String> parametersChleb = new HashMap<>();
         parametersChleb.put("Data ważności", "10.05.2025");
         Manufacturer manufacturer1 = new Manufacturer(1, "Piekarnia u Staszka", "Warszawa", "Staszek");
@@ -34,6 +43,7 @@ public class Controller {
     public boolean login(String login, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(login) && users.get(i).getPassword().equals(password)) {
+                loggedUser = users.get(i);
                 return true;
             }
 
@@ -41,4 +51,37 @@ public class Controller {
         }
         return false;
     }
+
+    public boolean checkIfProductExists(int ID) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getID() == ID) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public boolean checkIfEnoughProducts(int ID, int amount){
+        for (int i = 0; i < products.size(); i++){
+            if(products.get(i).getID() == ID && products.get(i).getCount() <= amount){
+                return  true;
+            }
+        }
+        return  false;
+    }
+
+    public Product getProductByID(int ID){
+        for (int i = 0; i < products.size(); i++){
+            if(products.get(i).getID() == ID){
+                return products.get(i);
+            }
+        }
+        return  null;
+    }
+
+    public void addPurchasesHistory(PurchasesHistory p){
+        purchasesHistory.add(p);
+    }
+
 }
